@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دنیا | آرایشگر حرفه‌ای</title>
+
+    <!-- Google Fonts - Vazirmatn -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Custom Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'chocolate': {
+                            50: '#f5efee',
+                            100: '#e8d5d0',
+                            200: '#d4b5ac',
+                            300: '#b8877a',
+                            400: '#8d5e52',
+                            500: '#6d4539',
+                            600: '#5a3a30',
+                            700: '#4a2f27',
+                            800: '#3E2723',
+                            900: '#2c1b18',
+                            950: '#1a100e',
+                        },
+                        'cream': {
+                            50: '#FFFEF9',
+                            100: '#FFFDD0',
+                            200: '#FDF5E6',
+                            300: '#f5e6c8',
+                            400: '#edd5a8',
+                        },
+                    },
+                    fontFamily: {
+                        'vazir': ['Vazirmatn', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+
+    <!-- Custom Styles -->
+    <style>
+        /* Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background-color: #FFFEF9;
+            color: #3E2723;
+            overflow-x: hidden;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #FDF5E6;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #8d5e52;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3E2723;
+        }
+
+        /* Elegant underline animation for nav links */
+        .nav-link {
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            right: 0;
+            background-color: #3E2723;
+            transition: width 0.35s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Portfolio placeholder hover effect */
+        .portfolio-item {
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(62, 39, 35, 0.15);
+        }
+
+        .portfolio-item .overlay {
+            transition: opacity 0.4s ease;
+        }
+
+        .portfolio-item:hover .overlay {
+            opacity: 1;
+        }
+
+        /* Button shine effect */
+        .btn-shine {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-shine::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                120deg,
+                transparent,
+                rgba(255, 255, 255, 0.25),
+                transparent
+            );
+            transition: left 0.5s ease;
+        }
+
+        .btn-shine:hover::before {
+            left: 100%;
+        }
+
+        /* Fade-in animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Decorative divider */
+        .divider {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to left, #3E2723, #8d5e52, #d4b5ac);
+            border-radius: 2px;
+        }
+
+        /* Mobile menu animation */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        /* Navbar background transition on scroll */
+        .navbar-scrolled {
+            background-color: rgba(255, 254, 249, 0.95) !important;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 2px 20px rgba(62, 39, 35, 0.08);
+        }
+
+        /* Hero decorative elements */
+        .hero-pattern {
+            background-image: radial-gradient(circle at 20% 50%, rgba(62, 39, 35, 0.03) 0%, transparent 50%),
+                              radial-gradient(circle at 80% 20%, rgba(62, 39, 35, 0.03) 0%, transparent 50%),
+                              radial-gradient(circle at 50% 80%, rgba(141, 94, 82, 0.03) 0%, transparent 50%);
+        }
+
+        /* Telegram button pulse */
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(62, 39, 35, 0.4);
+            }
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 15px rgba(62, 39, 35, 0);
+            }
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(62, 39, 35, 0);
+            }
+        }
+
+        .pulse-animation {
+            animation: pulse-ring 2.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+        }
+
+        /* Floating decorative shapes */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .float-animation-delay {
+            animation: float 8s ease-in-out 2s infinite;
+        }
+
+        /* ========================================= */
+        /* LIGHTBOX STYLES                           */
+        /* ========================================= */
+        .lightbox-backdrop {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background-color: rgba(26, 16, 14, 0.92);
+            backdrop-filter: blur(16px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.35s ease, visibility 0.35s ease;
+        }
+
+        .lightbox-backdrop.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .lightbox-backdrop img {
+            max-width: 90vw;
+            max-height: 85vh;
+            border-radius: 1rem;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+            transform: scale(0.9);
+            transition: transform 0.35s ease;
+            object-fit: contain;
+        }
+
+        .lightbox-backdrop.active img {
+            transform: scale(1);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #FDF5E6;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #FDF5E6;
+            font-size: 1.25rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .lightbox-prev {
+            left: 1.5rem;
+        }
+
+        .lightbox-next {
+            right: 1.5rem;
+        }
+
+        .lightbox-counter {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(253, 245, 230, 0.6);
+            font-size: 0.875rem;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+
+        /* Portfolio filter buttons */
+        .filter-btn {
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active {
+            background-color: #3E2723;
+            color: #FFFDD0;
+            box-shadow: 0 4px 15px rgba(62, 39, 35, 0.25);
+        }
+
+        /* Portfolio image loading skeleton */
+        .img-skeleton {
+            background: linear-gradient(110deg, #e8d5d0 8%, #f5efee 18%, #e8d5d0 33%);
+            background-size: 200% 100%;
+            animation: skeleton-shine 1.5s linear infinite;
+        }
+
+        @keyframes skeleton-shine {
+            to {
+                background-position-x: -200%;
+            }
+        }
+
+        /* Portfolio item image */
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="font-vazir">
+
+    <!-- ============================================= -->
+    <!-- LIGHTBOX (Full-screen Image Viewer)           -->
+    <!-- ============================================= -->
+    <div id="lightbox" class="lightbox-backdrop">
+        <button class="lightbox-close" id="lightbox-close" aria-label="بستن">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+        </button>
+        <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="قبلی">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+        </button>
+        <img id="lightbox-img" src="" alt="نمونه کار">
+        <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="بعدی">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+        </button>
+        <div class="lightbox-counter" id="lightbox-counter"></div>
+    </div>
+
+
+    <!-- ============================================= -->
+    <!-- NAVBAR -->
+    <!-- ============================================= -->
+    <nav id="navbar" class="fixed top-0 right-0 left-0 z-50 transition-all duration-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+
+                <!-- Logo -->
+                <a href="#home" class="flex items-center gap-2 group">
+                    <div class="w-10 h-10 rounded-full bg-chocolate-800 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <span class="text-cream-100 text-lg font-bold">د</span>
+                    </div>
+                    <span class="text-2xl font-bold text-chocolate-800 tracking-tight">دنیا</span>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#home" class="nav-link text-chocolate-800 font-medium hover:text-chocolate-600 transition-colors duration-300">خانه</a>
+                    <a href="#about" class="nav-link text-chocolate-700 font-medium hover:text-chocolate-600 transition-colors duration-300">درباره من</a>
+                    <a href="#portfolio" class="nav-link text-chocolate-700 font-medium hover:text-chocolate-600 transition-colors duration-300">نمونه کارها</a>
+                    <a href="#booking" class="bg-chocolate-800 text-cream-100 px-6 py-2.5 rounded-full font-medium hover:bg-chocolate-700 transition-all duration-300 hover:shadow-lg hover:shadow-chocolate-800/20">
+                        رزرو نوبت
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Toggle Button -->
+                <button id="mobile-menu-btn" class="md:hidden flex flex-col gap-1.5 p-2 focus:outline-none" aria-label="منوی موبایل">
+                    <span class="hamburger-line w-6 h-0.5 bg-chocolate-800 rounded transition-all duration-300"></span>
+                    <span class="hamburger-line w-6 h-0.5 bg-chocolate-800 rounded transition-all duration-300"></span>
+                    <span class="hamburger-line w-4 h-0.5 bg-chocolate-800 rounded transition-all duration-300"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu-overlay" class="fixed inset-0 bg-chocolate-800/30 backdrop-blur-sm z-40 hidden opacity-0 transition-opacity duration-300"></div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="mobile-menu fixed top-0 right-0 h-full w-72 bg-cream-50 shadow-2xl z-50 flex flex-col">
+            <div class="flex items-center justify-between p-6 border-b border-chocolate-100">
+                <span class="text-xl font-bold text-chocolate-800">دنیا</span>
+                <button id="mobile-menu-close" class="p-2 hover:bg-chocolate-50 rounded-lg transition-colors" aria-label="بستن منو">
+                    <svg class="w-6 h-6 text-chocolate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="flex flex-col gap-2 p-6">
+                <a href="#home" class="mobile-nav-link text-chocolate-800 font-medium py-3 px-4 rounded-xl hover:bg-chocolate-800 hover:text-cream-100 transition-all duration-300">خانه</a>
+                <a href="#about" class="mobile-nav-link text-chocolate-700 font-medium py-3 px-4 rounded-xl hover:bg-chocolate-800 hover:text-cream-100 transition-all duration-300">درباره من</a>
+                <a href="#portfolio" class="mobile-nav-link text-chocolate-700 font-medium py-3 px-4 rounded-xl hover:bg-chocolate-800 hover:text-cream-100 transition-all duration-300">نمونه کارها</a>
+                <a href="#booking" class="mobile-nav-link mt-4 bg-chocolate-800 text-cream-100 text-center py-3 px-4 rounded-xl font-medium hover:bg-chocolate-700 transition-all duration-300">رزرو نوبت</a>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- ============================================= -->
+    <!-- HERO / INTRODUCTION SECTION -->
+    <!-- ============================================= -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center hero-pattern pt-20">
+
+        <!-- Decorative background elements -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="absolute -top-20 -left-20 w-96 h-96 bg-chocolate-800/[0.02] rounded-full float-animation"></div>
+            <div class="absolute -bottom-32 -right-32 w-[500px] h-[500px] bg-chocolate-200/20 rounded-full float-animation-delay"></div>
+            <div class="absolute top-1/4 left-10 w-3 h-3 bg-chocolate-300/30 rounded-full float-animation"></div>
+            <div class="absolute top-1/3 right-20 w-2 h-2 bg-chocolate-400/20 rounded-full float-animation-delay"></div>
+            <div class="absolute bottom-1/4 left-1/4 w-4 h-4 bg-chocolate-200/25 rounded-full float-animation"></div>
+        </div>
+
+        <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <!-- Small tagline above heading -->
+            <div class="fade-in mb-6">
+                <span class="inline-block bg-chocolate-800/5 text-chocolate-600 text-sm font-medium px-5 py-2 rounded-full border border-chocolate-200/50">
+                    ✨ متخصص کوتاهی، استایل و سلامت مو
+                </span>
+            </div>
+
+            <!-- Main Heading -->
+            <h1 class="fade-in text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-chocolate-800 leading-tight mb-6">
+                زیبایی شما،
+                <br>
+                <span class="relative inline-block">
+                    هنر من است
+                    <svg class="absolute -bottom-2 right-0 w-full" viewBox="0 0 300 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2 8C50 2 100 2 150 6C200 10 250 4 298 6" stroke="#8d5e52" stroke-width="3" stroke-linecap="round" opacity="0.4"/>
+                    </svg>
+                </span>
+            </h1>
+
+            <!-- Sub-heading / Description -->
+            <p class="fade-in text-lg sm:text-xl text-chocolate-600 leading-relaxed max-w-2xl mx-auto mb-10">
+                من <strong class="text-chocolate-800">دنیا</strong> هستم. سال‌ها تجربه در کوتاهی و استایلینگ مو، به من این امکان رو داده که بهترین نسخه‌ی زیبایی شما رو خلق کنم. از کوتاهی مدرن گرفته تا مدل‌های خاص و مراقبت تخصصی مو، هر جزئیات رو با عشق و دقت انجام می‌دم.
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="fade-in flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#booking" class="btn-shine group bg-chocolate-800 text-cream-100 px-8 py-4 rounded-full text-lg font-bold hover:bg-chocolate-700 transition-all duration-300 hover:shadow-xl hover:shadow-chocolate-800/25 flex items-center gap-3">
+                    <span>رزرو نوبت</span>
+                    <svg class="w-5 h-5 group-hover:-translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                    </svg>
+                </a>
+                <a href="#portfolio" class="group text-chocolate-800 px-8 py-4 rounded-full text-lg font-medium border-2 border-chocolate-800/20 hover:border-chocolate-800/50 transition-all duration-300 flex items-center gap-2">
+                    <span>مشاهده نمونه کارها</span>
+                </a>
+            </div>
+
+            <!-- Scroll indicator -->
+            <div class="fade-in mt-16 flex justify-center">
+                <a href="#about" class="flex flex-col items-center gap-2 text-chocolate-400 hover:text-chocolate-600 transition-colors duration-300">
+                    <span class="text-xs font-medium">بیشتر ببینید</span>
+                    <svg class="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================= -->
+    <!-- ABOUT SECTION -->
+    <!-- ============================================= -->
+    <section id="about" class="py-20 sm:py-28 bg-cream-200/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+                <!-- Right Column: Image/Visual -->
+                <div class="fade-in relative">
+                    <div class="relative aspect-[4/5] rounded-3xl overflow-hidden bg-gradient-to-br from-chocolate-100 to-chocolate-200 shadow-2xl shadow-chocolate-800/10">
+                        <!-- 
+                            =============================================
+                            TO ADD YOUR IMAGE:
+                            1. Place your photo in the "images" folder
+                            2. Replace the placeholder below with:
+                               <img src="images/profile.jpg" alt="دنیا - آرایشگر حرفه‌ای" class="w-full h-full object-cover">
+                            3. Remove the placeholder div
+                            =============================================
+                        -->
+                        <img src="images/profile.jpg" alt="دنیا - آرایشگر حرفه‌ای" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-chocolate-800/5 rounded-3xl -z-10"></div>
+                    <div class="absolute -top-6 -right-6 w-24 h-24 border-2 border-chocolate-800/10 rounded-3xl -z-10"></div>
+                </div>
+
+                <!-- Left Column: Text Content -->
+                <div class="fade-in">
+                    <span class="inline-block text-chocolate-500 text-sm font-bold tracking-wider mb-4">درباره من</span>
+                    <div class="divider mb-6"></div>
+
+                    <h2 class="text-3xl sm:text-4xl font-black text-chocolate-800 leading-tight mb-6">
+                        هنر، دقت و
+                        <br>
+                        عشق به زیبایی
+                    </h2>
+
+                    <p class="text-chocolate-600 leading-relaxed text-lg mb-6">
+                        سلام، من <strong class="text-chocolate-800">دنیا</strong> هستم. از کودکی عاشق هنر و زیبایی بودم و این عشق من رو به دنیای آرایشگری کشوند. با سال‌ها تجربه و آموزش‌های تخصصی، تونستم مهارت‌هام رو در کوتاهی مو، استایل‌های مدرن و کلاسیک و مراقبت تخصصی مو به سطح حرفه‌ای برسونم.
+                    </p>
+                    <p class="text-chocolate-600 leading-relaxed text-lg mb-8">
+                        برای من هر مشتری یه بوم نقاشیه که باید با ظرافت و دقت، بهترین نسخه‌ی زیبایی رو روی اون خلق کنم. رضایت شما، بزرگ‌ترین افتخار منه.
+                    </p>
+
+                    <!-- Feature highlights -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-center gap-3 bg-cream-50 p-4 rounded-2xl">
+                            <div class="w-10 h-10 bg-chocolate-800/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <svg class="w-5 h-5 text-chocolate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                            </div>
+                            <span class="text-sm font-medium text-chocolate-800">کوتاهی مدرن</span>
+                        </div>
+                        <div class="flex items-center gap-3 bg-cream-50 p-4 rounded-2xl">
+                            <div class="w-10 h-10 bg-chocolate-800/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <svg class="w-5 h-5 text-chocolate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                            </div>
+                            <span class="text-sm font-medium text-chocolate-800">استایلینگ حرفه‌ای</span>
+                        </div>
+                        <div class="flex items-center gap-3 bg-cream-50 p-4 rounded-2xl">
+                            <div class="w-10 h-10 bg-chocolate-800/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <svg class="w-5 h-5 text-chocolate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                            </div>
+                            <span class="text-sm font-medium text-chocolate-800">سلامت و مراقبت مو</span>
+                        </div>
+                        <div class="flex items-center gap-3 bg-cream-50 p-4 rounded-2xl">
+                            <div class="w-10 h-10 bg-chocolate-800/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <svg class="w-5 h-5 text-chocolate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                            </div>
+                            <span class="text-sm font-medium text-chocolate-800">مشاوره تخصصی</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================= -->
+    <!-- PORTFOLIO / GALLERY SECTION (MODERN REDESIGN) -->
+    <!-- ============================================= -->
+    <section id="portfolio" class="py-20 sm:py-28">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- Section Header -->
+            <div class="text-center mb-12 fade-in">
+                <span class="inline-block text-chocolate-500 text-sm font-bold tracking-wider mb-4">نمونه کارها</span>
+                <div class="divider mx-auto mb-6"></div>
+                <h2 class="text-3xl sm:text-4xl font-black text-chocolate-800 mb-4">گالری آثار من</h2>
+                <p class="text-chocolate-600 text-lg max-w-xl mx-auto">
+                    نمونه‌هایی از کارهای من رو اینجا می‌تونید ببینید. هر پروژه با عشق و دقت انجام شده.
+                </p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="fade-in flex flex-wrap items-center justify-center gap-3 mb-12">
+                <button class="filter-btn active px-5 py-2.5 rounded-full text-sm font-medium border border-chocolate-200/50 bg-chocolate-800 text-cream-100" data-filter="all">
+                    همه
+                </button>
+                <button class="filter-btn px-5 py-2.5 rounded-full text-sm font-medium border border-chocolate-200/50 text-chocolate-700 hover:bg-chocolate-800/5" data-filter="haircut">
+                    کوتاهی مو
+                </button>
+                <button class="filter-btn px-5 py-2.5 rounded-full text-sm font-medium border border-chocolate-200/50 text-chocolate-700 hover:bg-chocolate-800/5" data-filter="styling">
+                    استایل مو
+                </button>
+                <button class="filter-btn px-5 py-2.5 rounded-full text-sm font-medium border border-chocolate-200/50 text-chocolate-700 hover:bg-chocolate-800/5" data-filter="health">
+                    سلامت مو
+                </button>
+            </div>
+
+            <!-- Portfolio Grid -->
+            <div id="portfolio-grid" class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+
+                <!-- 
+                    =============================================
+                    PORTFOLIO ITEM TEMPLATE
+                    =============================================
+                    To add your own images:
+                    1. Put your image in the "images/portfolio/" folder
+                    2. Replace src="images/portfolio/work-1.jpg" with your actual filename
+                    3. Change data-category to: "haircut", "styling", or "health"
+                    4. Change the alt text to describe the work
+                    5. Change the label text (e.g., "کوتاهی مدرن")
+                    =============================================
+                -->
+
+                <!-- Portfolio Item 1 - Haircut -->
+                <div class="fade-in portfolio-item group relative aspect-[4/5] rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer" data-category="haircut">
+                    <!-- PLACEHOLDER: Replace with your image -->
+                    <div class="absolute inset-0 img-skeleton flex flex-col items-center justify-center text-chocolate-500">
+                        <svg class="w-10 h-10 sm:w-12 sm:h-12 mb-2 opacity-30" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                        </svg>
+                        <span class="text-xs sm:text-sm font-medium opacity-40">تصویر نمونه کار</span>
+                    </div>
+                    <!-- 
+                        WHEN YOU HAVE YOUR IMAGE, replace the div above with:
+                        <img src="images/portfolio/work-1.jpg" alt="کوتاهی مدرن - نمونه کار ۱" class="w-full h-full object-cover" loading="lazy">
+                    -->
+                    <!-- Hover overlay with label -->
+                    <div class="overlay absolute inset-0 bg-gradient-to-t from-chocolate-800/80 via-chocolate-800/20 to-transparent opacity-0 flex items-end p-4 sm:p-6">
+                        <div class="text-cream-100">
+                            <span class="inline-block bg-cream-100/20 backdrop-blur-sm text-xs px-3 py-1 rounded-full mb-2">کوتاهی مو</span>
+                            <h3 class="text-sm sm:text-base font-bold">کوتاهی مدرن</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 2 - Styling -->
+                <div class="fade-in portfolio-item group relative aspect-[4/5] rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer" data-category="styling">
+                    <div class="absolute inset-0 img-skeleton flex flex-col items-center justify-center text-chocolate-500">
+                        <svg class="w-10 h-10 sm:w-12 sm:h-12 mb-2 opacity-30" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                        </svg>
+                        <span class="text-xs sm:text-sm font-medium opacity-40">تصویر نمونه کار</span>
+                    </div>
+                    <!-- <img src="images/portfolio/work-2.jpg" alt="استایل حرفه‌ای - نمونه کار ۲" class="w-full h-full object-cover" loading="lazy"> -->
+                    <div class="overlay absolute inset-0 bg-gradient-to-t from-chocolate-800/80 via-chocolate-800/20 to-transparent opacity-0 flex items-end p-4 sm:p-6">
+                        <div class="text-cream-100">
+                            <span class="inline-block bg-cream-100/20 backdrop-blur-sm text-xs px-3 py-1 rounded-full mb-2">استایل مو</span>
+                            <h3 class="text-sm sm:text-base font-bold">استایل حرفه‌ای</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 3 - Health -->
+                <div class="fade-in portfolio-item group relative aspect-[4/5] rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer" data-category="health">
+                    <div class="absolute inset-0 img-skeleton flex flex-col items-center justify-center text-chocolate-500">
+                        <svg class="w-10 h-10 sm:w-12 sm:h-12 mb-2 opacity-30" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                        </svg>
+                        <span class="text-xs sm:text-sm font-medium opacity-40">تصویر نمونه کار</span>
+                    </div>
+                    <!-- <img src="images/portfolio/work-3.jpg" alt="سلامت مو - نمونه کار ۳" class="w-full h-full object-cover" loading="lazy"> -->
+                    <div class="overlay absolute inset-0 bg-gradient-to-t from-chocolate-800/80 via-chocolate-800/20 to-transparent opacity-0 flex items-end p-4 sm:p-6">
+                        <div class="text-cream-100">
+                            <span class="inline-block bg-cream-100/20 backdrop-blur-sm text-xs px-3 py-1 rounded-full mb-2">سلامت مو</span>
+                            <h3 class="text-sm sm:text-base font-bold">مراقبت و احیای مو</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 4 - Haircut -->
+                <div class="fade-in portfolio-item group relative aspect-[4/5] rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer" data-category="haircut">
+                    <div class="absolute inset-0 img-skeleton flex flex-col items-center justify-center text-chocolate-500">
+                        <svg class="w-10 h-10 sm:w-12 sm:h-12 mb-2 opacity-30" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                        </svg>
+                        <span class="text-xs sm:text-sm font-medium opacity-40">تصویر نمونه کار</span>
+                    </div>
+                    <!-- <img src="images/portfolio/work-4.jpg" alt="کوتاهی کلاسیک - نمونه کار ۴" class="w-full h-full object-cover" loading="lazy"> -->
+                    <div class="overlay absolute inset-0 bg-gradient-to-t from-chocolate-800/80 via-chocolate-800/20 to-transparent opacity-0 flex items-end p-4 sm:p-6">
+                        <div class="text-cream-100">
+                            <span class="inline-block bg-cream-100/20 backdrop-blur-sm text-xs px-3 py-1 rounded-full mb-2">کوتاهی مو</span>
+                            <h3 class="text-sm sm:text-base font-bold">کوتاهی کلاسیک</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 5 - Styling -->
+                <div class="fade-in portfolio-item group relative aspect-[4/5] rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer" data-category="styling">
+                    <div class="absolute inset-0 img-skeleton flex flex-col items-center justify-center text-chocolate-500">
+                        <svg class="w-10 h-10 sm:w-12 sm:h-12 mb-2 opacity-30" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                        </svg>
+                        <span class="text-xs sm:text-sm font-medium opacity-40">تصویر نمونه کار</span>
+                    </div>
+                    <!-- <img src="images/portfolio/work-5.jpg" alt="استایل ویژه - نمونه کار ۵" class="w-full h-full object-cover" loading="lazy"> -->
+                    <div class="overlay absolute inset-0 bg-gradient-to-t from-chocolate-800/80 via-chocolate-800/20 to-transparent opacity-0 flex items-end p-4 sm:p-6">
+                        <div class="text-cream-100">
+                            <span class="inline-block bg-cream-100/20 backdrop-blur-sm text-xs px-3 py-1 rounded-full mb-2">استایل مو</span>
+                            <h3 class="text-sm sm:text-base font-bold">استایل ویژه</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 6 - Health -->
+                <div class="fade-in portfolio-item group relative aspect-[4/5] rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer" data-category="health">
+                    <div class="absolute inset-0 img-skeleton flex flex-col items-center justify-center text-chocolate-500">
+                        <svg class="w-10 h-10 sm:w-12 sm:h-12 mb-2 opacity-30" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                        </svg>
+                        <span class="text-xs sm:text-sm font-medium opacity-40">تصویر نمونه کار</span>
+                    </div>
+                    <!-- <img src="images/portfolio/work-6.jpg" alt="تقویت مو - نمونه کار ۶" class="w-full h-full object-cover" loading="lazy"> -->
+                    <div class="overlay absolute inset-0 bg-gradient-to-t from-chocolate-800/80 via-chocolate-800/20 to-transparent opacity-0 flex items-end p-4 sm:p-6">
+                        <div class="text-cream-100">
+                            <span class="inline-block bg-cream-100/20 backdrop-blur-sm text-xs px-3 py-1 rounded-full mb-2">سلامت مو</span>
+                            <h3 class="text-sm sm:text-base font-bold">تقویت و بازسازی مو</h3>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- "Load More" placeholder (optional) -->
+            <div class="fade-in text-center mt-12">
+                <p class="text-chocolate-400 text-sm">
+                    نمونه کارهای بیشتر به زودی اضافه می‌شود ✨
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================= -->
+    <!-- BOOKING / APPOINTMENT SECTION -->
+    <!-- ============================================= -->
+    <section id="booking" class="py-20 sm:py-28 bg-chocolate-800 relative overflow-hidden">
+
+        <!-- Decorative background patterns -->
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-white/[0.02] rounded-full -translate-y-1/2 translate-x-1/3"></div>
+            <div class="absolute bottom-0 left-0 w-80 h-80 bg-white/[0.02] rounded-full translate-y-1/3 -translate-x-1/4"></div>
+            <div class="absolute top-10 left-10 grid grid-cols-5 gap-4 opacity-10">
+                <div class="w-1.5 h-1.5 bg-cream-100 rounded-full"></div>
+                <div class="w-1.5 h-1.5 bg-cream-100 rounded-full"></div>
+                <div class="w-1.5 h-1.5 bg-cream-100 rounded-full"></div>
+                <div class="w-1.5 h-1.5 bg-cream-100 rounded-full"></div>
+                <div class="w-1.5 h-1.5 bg-cream-100 rounded-full"></div>
+                <div class="w-1.5 h-1.5 bg-cream-100 rounded-full"></div>
+                <div class="w-1.5 h-1.5 bg-cream-100 rounded-full"></div>
+                <div class="w-1.5 h-1.5 bg-cream-100 rounded-full"></div>
+                <div class="w-1.5 h-1.5 bg-cream-100 rounded-full"></div>
+                <div class="w-1.5 h-1.5 bg-cream-100 rounded-full"></div>
+            </div>
+        </div>
+
+        <div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+
+            <!-- Booking Card -->
+            <div class="fade-in bg-cream-50 rounded-3xl sm:rounded-[2rem] p-8 sm:p-12 lg:p-16 shadow-2xl">
+
+                <!-- Icon -->
+                <div class="w-20 h-20 bg-chocolate-800 rounded-full flex items-center justify-center mx-auto mb-8 pulse-animation">
+                    <svg class="w-10 h-10 text-cream-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                    </svg>
+                </div>
+
+                <!-- Heading -->
+                <h2 class="text-3xl sm:text-4xl font-black text-chocolate-800 mb-4">
+                    رزرو نوبت آنلاین
+                </h2>
+
+                <p class="text-chocolate-600 text-lg leading-relaxed max-w-lg mx-auto mb-10">
+                    برای رزرو نوبت، کافیه از طریق ربات تلگرام ما اقدام کنید. سریع، راحت و ۲۴ ساعته در دسترس شماست.
+                </p>
+
+                <!-- Telegram Bot CTA Button -->
+                <!--
+                    =============================================
+                    IMPORTANT: Replace the href value below with
+                    your actual Telegram bot link.
+                    Example: href="https://t.me/YourBotUsername"
+                    =============================================
+                -->
+                <a href="https://t.me/worlldonyabot" target="_blank" rel="noopener noreferrer"
+                   class="btn-shine inline-flex items-center gap-3 bg-chocolate-800 text-cream-100 px-8 sm:px-10 py-4 sm:py-5 rounded-full text-lg sm:text-xl font-bold hover:bg-chocolate-700 transition-all duration-300 hover:shadow-xl hover:shadow-chocolate-800/30 group">
+
+                    <!-- Telegram SVG Icon -->
+                    <svg class="w-6 h-6 sm:w-7 sm:h-7 group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                    </svg>
+
+                    <span>رزرو نوبت از طریق ربات تلگرام</span>
+                </a>
+
+                <!-- Helper text -->
+                <p class="mt-6 text-chocolate-400 text-sm">
+                    با کلیک روی دکمه بالا، به ربات تلگرام ما هدایت می‌شوید
+                </p>
+
+                <!-- Steps -->
+                <div class="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 text-right">
+                    <div class="flex sm:flex-col items-center sm:items-center gap-4 sm:gap-3 sm:text-center">
+                        <div class="w-10 h-10 bg-chocolate-800/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                            <span class="text-chocolate-800 font-bold">۱</span>
+                        </div>
+                        <p class="text-sm text-chocolate-600">روی دکمه رزرو کلیک کنید</p>
+                    </div>
+                    <div class="flex sm:flex-col items-center sm:items-center gap-4 sm:gap-3 sm:text-center">
+                        <div class="w-10 h-10 bg-chocolate-800/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                            <span class="text-chocolate-800 font-bold">۲</span>
+                        </div>
+                        <p class="text-sm text-chocolate-600">خدمات مورد نظر رو انتخاب کنید</p>
+                    </div>
+                    <div class="flex sm:flex-col items-center sm:items-center gap-4 sm:gap-3 sm:text-center">
+                        <div class="w-10 h-10 bg-chocolate-800/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                            <span class="text-chocolate-800 font-bold">۳</span>
+                        </div>
+                        <p class="text-sm text-chocolate-600">روز و ساعت دلخواه رو مشخص کنید</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================= -->
+    <!-- FOOTER -->
+    <!-- ============================================= -->
+    <footer class="bg-chocolate-950 text-cream-200 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col items-center text-center">
+
+                <!-- Footer Logo -->
+                <div class="flex items-center gap-2 mb-6">
+                    <div class="w-10 h-10 rounded-full bg-cream-100/10 border border-cream-100/20 flex items-center justify-center">
+                        <span class="text-cream-100 text-lg font-bold">د</span>
+                    </div>
+                    <span class="text-2xl font-bold text-cream-100">دنیا</span>
+                </div>
+
+                <!-- Social Media Links -->
+                <div class="flex items-center gap-4 mb-8">
+                    <!-- Instagram -->
+                    <!--
+                        =============================================
+                        IMPORTANT: Replace the href value below with
+                        your actual Instagram page URL.
+                        Example: href="https://instagram.com/your_username"
+                        =============================================
+                    -->
+                    <a href="https://www.instagram.com/worlldhaircut" target="_blank" rel="noopener noreferrer" aria-label="اینستاگرام دنیا"
+                       class="w-12 h-12 bg-cream-100/10 hover:bg-cream-100/20 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110">
+                        <svg class="w-5 h-5 text-cream-200" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+                        </svg>
+                    </a>
+
+                    <!-- Telegram -->
+                    <!--
+                        =============================================
+                        IMPORTANT: Replace the href value below with
+                        your actual Telegram channel/bot URL.
+                        Example: href="https://t.me/YourBotUsername"
+                        =============================================
+                    -->
+                    <a href="لینک ربات تلگرام خود را اینجا بنویسید" target="_blank" rel="noopener noreferrer" aria-label="تلگرام دنیا"
+                       class="w-12 h-12 bg-cream-100/10 hover:bg-cream-100/20 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110">
+                        <svg class="w-5 h-5 text-cream-200" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Divider -->
+                <div class="w-full max-w-xs h-px bg-cream-100/10 mb-6"></div>
+
+                <!-- Copyright -->
+                <p class="text-cream-200/50 text-sm">
+                    © <span id="current-year"></span> تمامی حقوق برای <span class="text-cream-200/80 font-medium">دنیا</span> محفوظ است.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- ============================================= -->
+    <!-- JAVASCRIPT -->
+    <!-- ============================================= -->
+    <script>
+        // =============================================
+        // 1. NAVBAR - Scroll Effect
+        // =============================================
+        const navbar = document.getElementById('navbar');
+
+        function handleNavbarScroll() {
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+            }
+        }
+
+        window.addEventListener('scroll', handleNavbarScroll);
+        handleNavbarScroll();
+
+
+        // =============================================
+        // 2. MOBILE MENU - Open/Close Toggle
+        // =============================================
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        function openMobileMenu() {
+            mobileMenu.classList.add('open');
+            mobileMenuOverlay.classList.remove('hidden');
+            requestAnimationFrame(() => {
+                mobileMenuOverlay.classList.add('opacity-100');
+                mobileMenuOverlay.classList.remove('opacity-0');
+            });
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('open');
+            mobileMenuOverlay.classList.add('opacity-0');
+            mobileMenuOverlay.classList.remove('opacity-100');
+            setTimeout(() => {
+                mobileMenuOverlay.classList.add('hidden');
+            }, 300);
+            document.body.style.overflow = '';
+        }
+
+        mobileMenuBtn.addEventListener('click', openMobileMenu);
+        mobileMenuClose.addEventListener('click', closeMobileMenu);
+        mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+
+        // =============================================
+        // 3. SMOOTH SCROLL for Anchor Links
+        // =============================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                e.preventDefault();
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const navbarHeight = navbar.offsetHeight;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+
+        // =============================================
+        // 4. FADE-IN ANIMATION on Scroll
+        // =============================================
+        const fadeElements = document.querySelectorAll('.fade-in');
+
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                    fadeObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        fadeElements.forEach(el => fadeObserver.observe(el));
+
+
+        // =============================================
+        // 5. DYNAMIC YEAR in Footer Copyright
+        // =============================================
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+
+        // =============================================
+        // 6. ACTIVE NAV LINK Highlighting on Scroll
+        // =============================================
+        const sections = document.querySelectorAll('section[id]');
+        const desktopNavLinks = document.querySelectorAll('.hidden.md\\:flex a.nav-link');
+
+        function highlightNavOnScroll() {
+            const scrollPos = window.scrollY + navbar.offsetHeight + 100;
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+
+                if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                    desktopNavLinks.forEach(link => {
+                        link.classList.remove('text-chocolate-800', 'font-bold');
+                        link.classList.add('text-chocolate-700');
+                        if (link.getAttribute('href') === '#' + sectionId) {
+                            link.classList.add('text-chocolate-800', 'font-bold');
+                            link.classList.remove('text-chocolate-700');
+                        }
+                    });
+                }
+            });
+        }
+
+        window.addEventListener('scroll', highlightNavOnScroll);
+
+
+        // =============================================
+        // 7. PORTFOLIO FILTER (Category Tabs)
+        // =============================================
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('#portfolio-grid .portfolio-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active state on buttons
+                filterBtns.forEach(b => {
+                    b.classList.remove('active', 'bg-chocolate-800', 'text-cream-100');
+                    b.classList.add('text-chocolate-700');
+                });
+                btn.classList.add('active', 'bg-chocolate-800', 'text-cream-100');
+                btn.classList.remove('text-chocolate-700');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                portfolioItems.forEach(item => {
+                    const category = item.getAttribute('data-category');
+
+                    if (filterValue === 'all' || category === filterValue) {
+                        item.style.display = '';
+                        // Re-trigger fade-in
+                        item.style.opacity = '0';
+                        item.style.transform = 'translateY(20px)';
+                        requestAnimationFrame(() => {
+                            requestAnimationFrame(() => {
+                                item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                                item.style.opacity = '1';
+                                item.style.transform = 'translateY(0)';
+                            });
+                        });
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+
+        // =============================================
+        // 8. LIGHTBOX (Full-screen Image Viewer)
+        // =============================================
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxClose = document.getElementById('lightbox-close');
+        const lightboxPrev = document.getElementById('lightbox-prev');
+        const lightboxNext = document.getElementById('lightbox-next');
+        const lightboxCounter = document.getElementById('lightbox-counter');
+
+        let currentLightboxIndex = 0;
+        let lightboxImages = [];
+
+        function collectVisibleImages() {
+            lightboxImages = [];
+            portfolioItems.forEach(item => {
+                if (item.style.display !== 'none') {
+                    const img = item.querySelector('img');
+                    if (img) {
+                        lightboxImages.push({
+                            src: img.src,
+                            alt: img.alt
+                        });
+                    }
+                }
+            });
+        }
+
+        function openLightbox(index) {
+            collectVisibleImages();
+            if (lightboxImages.length === 0) return;
+
+            currentLightboxIndex = index;
+            updateLightboxImage();
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function updateLightboxImage() {
+            if (lightboxImages.length === 0) return;
+            lightboxImg.src = lightboxImages[currentLightboxIndex].src;
+            lightboxImg.alt = lightboxImages[currentLightboxIndex].alt;
+            lightboxCounter.textContent = `${currentLightboxIndex + 1} / ${lightboxImages.length}`;
+        }
+
+        function nextImage() {
+            currentLightboxIndex = (currentLightboxIndex + 1) % lightboxImages.length;
+            updateLightboxImage();
+        }
+
+        function prevImage() {
+            currentLightboxIndex = (currentLightboxIndex - 1 + lightboxImages.length) % lightboxImages.length;
+            updateLightboxImage();
+        }
+
+        // Click on portfolio items to open lightbox
+        portfolioItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                const img = item.querySelector('img');
+                if (img) {
+                    // Find actual index among visible items with images
+                    collectVisibleImages();
+                    const src = img.src;
+                    const actualIndex = lightboxImages.findIndex(i => i.src === src);
+                    if (actualIndex !== -1) {
+                        openLightbox(actualIndex);
+                    }
+                }
+            });
+        });
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightboxNext.addEventListener('click', nextImage);
+        lightboxPrev.addEventListener('click', prevImage);
+
+        // Close on backdrop click
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') nextImage();  // RTL: left = next
+            if (e.key === 'ArrowRight') prevImage(); // RTL: right = prev
+        });
+    </script>
+
+</body>
+</html>
